@@ -142,16 +142,22 @@ def save()
 
 # item delete
 
-# def delete()
-#   db = PG.connect({
-#     dbname: "bounty_hunters",
-#     host: "localhost"
-#   })
-#
-#   sql = "
-#   DELETE FROM bounties
-#   WHERE id = $5
-#  "
+def self.delete(id)
+  db = PG.connect({
+    dbname: "bounty_hunters",
+    host: "localhost"
+  })
+
+  sql = "
+  DELETE FROM bounties
+  WHERE id = $1
+ "
+ value = [id]
+
+ db.prepare("find", sql)
+ found = db.exec_prepared("find", value)
+ db.close()
+end
 
 
 
