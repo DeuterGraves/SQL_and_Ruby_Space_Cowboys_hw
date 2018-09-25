@@ -125,11 +125,13 @@ def save()
 
     sql = "
     SELECT * FROM bounties
-    WHERE id = #{ id };
+    WHERE id = $1;
     "
 
+    value = [id]
+
     db.prepare("find", sql)
-    found = db.exec_prepared("find")
+    found = db.exec_prepared("find", value)
     db.close()
 
     found_object = found.map { |found_hash| Bounty.new(found_hash)  }

@@ -43,7 +43,7 @@ bounty2.update()
 bounty3.danger_level = "extremely low - may demand cuddles"
 bounty3.update()
 
-p Bounty.find(63)
+p Bounty.find(70)
 
 binding.pry
 nil
